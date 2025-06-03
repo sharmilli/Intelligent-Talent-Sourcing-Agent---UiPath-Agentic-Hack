@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:uipath="http://uipath.org/schema/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" exporter="UiPath Studio Web (https://uipath.com)" exporterVersion="1a53f0a7">
+  <bpmn:process id="Process_1" name="Intelligent-Talent-Sourcing-Agent---UiPath-Agentic-Hack" isExecutable="false">
+    <bpmn:documentation>Recruitment today is time-consuming, manual, and inefficient. Recruiters spend hours navigating job portals, parsing resumes, sending generic outreach, and scheduling interviews. High-fit candidates often slip through the cracks due to poor matching, delayed follow-ups, or lack of personalization.</bpmn:documentation>
+    <bpmn:serviceTask id="buildUiPathAppsInternalOpenings" name="Build UiPath Apps Internal Openings">
+      <bpmn:incoming>seq-0</bpmn:incoming>
+      <bpmn:outgoing>seq-10</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="storeJobRequirementsInDataServiceEntity" name="Store Job Requirements in Data Service Entity">
+      <bpmn:incoming>seq-10</bpmn:incoming>
+      <bpmn:outgoing>seq-11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="parseJobOpeningsRecords" name="Parse Job Openings Records">
+      <bpmn:incoming>seq-11</bpmn:incoming>
+      <bpmn:outgoing>seq-12</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="searchLinkedInProfiles" name="Search LinkedIn Profiles">
+      <bpmn:incoming>seq-12</bpmn:incoming>
+      <bpmn:outgoing>seq-2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="exportLinkedInProfiles" name="Export LinkedIn Profiles">
+      <bpmn:incoming>seq-2</bpmn:incoming>
+      <bpmn:outgoing>seq-3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="rankCandidates" name="Rank Candidates">
+      <bpmn:incoming>edge_MuNqUP</bpmn:incoming>
+      <bpmn:outgoing>seq-4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="reviewShortlistedCandidates" name="Review Shortlisted Candidates">
+      <bpmn:incoming>seq-4</bpmn:incoming>
+      <bpmn:outgoing>seq-5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="draftPersonalizedOutreach" name="Draft Personalized Outreach">
+      <bpmn:incoming>seq-5</bpmn:incoming>
+      <bpmn:outgoing>seq-6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="updateATSSystem" name="Update ATS System">
+      <bpmn:incoming>seq-6</bpmn:incoming>
+      <bpmn:outgoing>seq-7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="sendEmailsAndCalendarInvites" name="Send Emails and Calendar Invites">
+      <bpmn:incoming>seq-7</bpmn:incoming>
+      <bpmn:outgoing>seq-8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="collectFeedback" name="Collect Feedback">
+      <bpmn:incoming>seq-8</bpmn:incoming>
+      <bpmn:outgoing>seq-9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="endEvent" name="End Event">
+      <bpmn:incoming>seq-9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:startEvent id="Event_start">
+      <bpmn:extensionElements>
+        <uipath:entryPointId value="2233b05e-c851-4a3f-8df7-1bbec05622f7" />
+      </bpmn:extensionElements>
+      <bpmn:outgoing>seq-0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_fII0Kx" name="Profile Ranking">
+      <bpmn:incoming>seq-3</bpmn:incoming>
+      <bpmn:outgoing>edge_MuNqUP</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="seq-10" sourceRef="buildUiPathAppsInternalOpenings" targetRef="storeJobRequirementsInDataServiceEntity" />
+    <bpmn:sequenceFlow id="seq-11" sourceRef="storeJobRequirementsInDataServiceEntity" targetRef="parseJobOpeningsRecords" />
+    <bpmn:sequenceFlow id="seq-12" sourceRef="parseJobOpeningsRecords" targetRef="searchLinkedInProfiles" />
+    <bpmn:sequenceFlow id="seq-0" sourceRef="Event_start" targetRef="buildUiPathAppsInternalOpenings" />
+    <bpmn:sequenceFlow id="seq-2" sourceRef="searchLinkedInProfiles" targetRef="exportLinkedInProfiles" />
+    <bpmn:sequenceFlow id="seq-3" sourceRef="exportLinkedInProfiles" targetRef="Activity_fII0Kx" />
+    <bpmn:sequenceFlow id="seq-4" sourceRef="rankCandidates" targetRef="reviewShortlistedCandidates" />
+    <bpmn:sequenceFlow id="seq-5" sourceRef="reviewShortlistedCandidates" targetRef="draftPersonalizedOutreach" />
+    <bpmn:sequenceFlow id="seq-6" sourceRef="draftPersonalizedOutreach" targetRef="updateATSSystem" />
+    <bpmn:sequenceFlow id="seq-7" sourceRef="updateATSSystem" targetRef="sendEmailsAndCalendarInvites" />
+    <bpmn:sequenceFlow id="seq-8" sourceRef="sendEmailsAndCalendarInvites" targetRef="collectFeedback" />
+    <bpmn:sequenceFlow id="seq-9" sourceRef="collectFeedback" targetRef="endEvent" />
+    <bpmn:sequenceFlow id="edge_MuNqUP" sourceRef="Activity_fII0Kx" targetRef="rankCandidates" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="S_buildUiPathAppsInternalOpenings" bpmnElement="buildUiPathAppsInternalOpenings">
+        <dc:Bounds x="78" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="78" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_storeJobRequirementsInDataServiceEntity" bpmnElement="storeJobRequirementsInDataServiceEntity">
+        <dc:Bounds x="228" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="228" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_parseJobOpeningsRecords" bpmnElement="parseJobOpeningsRecords">
+        <dc:Bounds x="378" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="378" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_searchLinkedInProfiles" bpmnElement="searchLinkedInProfiles">
+        <dc:Bounds x="528" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="528" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_exportLinkedInProfiles" bpmnElement="exportLinkedInProfiles">
+        <dc:Bounds x="668" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="668" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_rankCandidates" bpmnElement="rankCandidates">
+        <dc:Bounds x="973" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="973" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_reviewShortlistedCandidates" bpmnElement="reviewShortlistedCandidates">
+        <dc:Bounds x="1278" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1278" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_draftPersonalizedOutreach" bpmnElement="draftPersonalizedOutreach">
+        <dc:Bounds x="1428" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1428" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_updateATSSystem" bpmnElement="updateATSSystem">
+        <dc:Bounds x="1578" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1578" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_sendEmailsAndCalendarInvites" bpmnElement="sendEmailsAndCalendarInvites">
+        <dc:Bounds x="1728" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1728" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_collectFeedback" bpmnElement="collectFeedback">
+        <dc:Bounds x="1878" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1878" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_endEvent" bpmnElement="endEvent">
+        <dc:Bounds x="2060" y="200" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2060" y="241" width="36" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Event_start" bpmnElement="Event_start">
+        <dc:Bounds x="79.00000000000001" y="50" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="79.00000000000001" y="91" width="36" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_Activity_fII0Kx" bpmnElement="Activity_fII0Kx">
+        <dc:Bounds x="827" y="178" width="100" height="80" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="827" y="263" width="100" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-10" bpmnElement="seq-10">
+        <di:waypoint x="178" y="218" />
+        <di:waypoint x="228" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-11" bpmnElement="seq-11">
+        <di:waypoint x="328" y="218" />
+        <di:waypoint x="378" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-12" bpmnElement="seq-12">
+        <di:waypoint x="478" y="218" />
+        <di:waypoint x="528" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-0" bpmnElement="seq-0">
+        <di:waypoint x="79.00000000000001" y="68" />
+        <di:waypoint x="41" y="68" />
+        <di:waypoint x="41" y="218" />
+        <di:waypoint x="78" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-2" bpmnElement="seq-2">
+        <di:waypoint x="628" y="218" />
+        <di:waypoint x="668" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-3" bpmnElement="seq-3">
+        <di:waypoint x="768" y="218" />
+        <di:waypoint x="827" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-4" bpmnElement="seq-4">
+        <di:waypoint x="1073" y="218" />
+        <di:waypoint x="1278" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-5" bpmnElement="seq-5">
+        <di:waypoint x="1378" y="218" />
+        <di:waypoint x="1428" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-6" bpmnElement="seq-6">
+        <di:waypoint x="1528" y="218" />
+        <di:waypoint x="1578" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-7" bpmnElement="seq-7">
+        <di:waypoint x="1678" y="218" />
+        <di:waypoint x="1728" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-8" bpmnElement="seq-8">
+        <di:waypoint x="1828" y="218" />
+        <di:waypoint x="1878" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_seq-9" bpmnElement="seq-9">
+        <di:waypoint x="1978" y="218" />
+        <di:waypoint x="2060" y="218" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_edge_MuNqUP" bpmnElement="edge_MuNqUP">
+        <di:waypoint x="927" y="218" />
+        <di:waypoint x="973" y="218" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
