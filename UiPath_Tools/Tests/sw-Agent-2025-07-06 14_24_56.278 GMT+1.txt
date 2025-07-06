@@ -1,0 +1,4 @@
+2025-07-06 14:24:10.387 GMT+1:	Info: Provisioning solution...
+2025-07-06 14:24:10.391 GMT+1:	Info: Publishing additional projects in the solution
+2025-07-06 14:24:48.487 GMT+1:	Info: Provisioning resources
+2025-07-06 14:24:56.278 GMT+1:	Info: Provisioning solution completed
